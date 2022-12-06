@@ -1,4 +1,21 @@
-//LIBRARY SYSTEM PROJECT V2 Bobby
+/*LIBRARY SYSTEM PROJECT V3 Bobby
+it is possible to refactor this code to adhere to object-oriented programming principles. 
+Some key changes that could be made include:
+
+Create separate Book and User classes, each with its own header and cpp file. 
+The code for each class should be moved out of the library_system struct and into these new files.
+
+Make the member functions of the Book and User classes private so that they can only be accessed by other member functions of the same class. 
+This will help enforce encapsulation and modularity.
+
+Define the member functions of the Book and User classes in the cpp files. 
+This will help keep the code organized and easy to read.
+
+Add a LibrarySystem class that will manage the books and users in the library. 
+This class should have its own header and cpp file as well.
+*/
+
+Create member functions for the LibrarySystem class that allow users to borrow and return books, and allow the system to keep track of which books have been borrowed by which users. These functions should use the Book and User classes to perform their operations.
 #include<iostream>
 #include <vector>
 #include <algorithm>
@@ -7,14 +24,14 @@
 using namespace std;
 
 
-struct book 
+struct Book 
 {
 	int id;
 	string name;
 	int total_quantity;
 	int total_borrowed;
 
-	book() 
+	Book() 
 	{
 		total_quantity = total_borrowed = 0;
 		id = -1;
@@ -197,9 +214,9 @@ struct library_system
 
 	void add_book() 
 	{
-		book b;
+		Book b;
 		b.read();   //See lines 24-33
-		books.push_back(b);
+		Books.push_back(b);
 	}
 
 	void search_books_by_prefix() 
@@ -208,7 +225,7 @@ struct library_system
 		string prefix;
 		cin >> prefix;
 		int count = 0;
-		for (book& b : books) {
+		for (Book& b : Books) {
 			if (b.has_prefix(prefix))    
 				//Note how this calls a book struct function (lines 49-60)
 			{
